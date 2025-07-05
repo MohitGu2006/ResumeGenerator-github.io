@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Click Resume Generator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-file-alt"></i> Resume Generator</h1>
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Form Section -->
+                <div class="form-section">
+                    <div class="form-header">
+                        <h2>Create Your Resume</h2>
+                        <p>Fill out the form below to generate your professional resume</p>
+                    </div>
+
+                    <form id="resume-form" class="resume-form">
+                        <!-- Personal Information -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-user"></i> Personal Information</h3>
+                            <div class="input-row">
+                                <input type="text" id="fullName" placeholder="Full Name *" required>
+                                <input type="email" id="email" placeholder="Email Address *" required>
+                            </div>
+                            <div class="input-row">
+                                <input type="tel" id="phone" placeholder="Phone Number">
+                                <input type="text" id="location" placeholder="City, State">
+                            </div>
+                            <div class="input-row">
+                                <input type="url" id="linkedin" placeholder="LinkedIn Profile">
+                                <input type="url" id="website" placeholder="Personal Website">
+                            </div>
+                        </div>
+
+                        <!-- Professional Summary -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-quote-left"></i> Professional Summary</h3>
+                            <textarea id="summary" placeholder="Brief professional summary highlighting your key qualifications and career objectives..."></textarea>
+                        </div>
+
+                        <!-- Experience -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
+                            <div id="experience-container">
+                                <div class="experience-item">
+                                    <div class="input-row">
+                                        <input type="text" class="job-title" placeholder="Job Title">
+                                        <input type="text" class="company" placeholder="Company Name">
+                                    </div>
+                                    <div class="input-row">
+                                        <input type="text" class="start-date" placeholder="Start Date">
+                                        <input type="text" class="end-date" placeholder="End Date">
+                                    </div>
+                                    <textarea class="job-description" placeholder="Job responsibilities and achievements..."></textarea>
+                                </div>
+                            </div>
+                            <button type="button" id="add-experience" class="add-btn">
+                                <i class="fas fa-plus"></i> Add Experience
+                            </button>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                            <div id="education-container">
+                                <div class="education-item">
+                                    <div class="input-row">
+                                        <input type="text" class="degree" placeholder="Degree">
+                                        <input type="text" class="school" placeholder="School/University">
+                                    </div>
+                                    <div class="input-row">
+                                        <input type="text" class="graduation-year" placeholder="Graduation Year">
+                                        <input type="text" class="gpa" placeholder="GPA (Optional)">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="add-education" class="add-btn">
+                                <i class="fas fa-plus"></i> Add Education
+                            </button>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-cogs"></i> Skills</h3>
+                            <textarea id="skills" placeholder="Enter your skills separated by commas (e.g., JavaScript, Python, Project Management)"></textarea>
+                        </div>
+
+                        <!-- Template Selection -->
+                        <div class="form-group">
+                            <h3><i class="fas fa-palette"></i> Choose Template</h3>
+                            <div class="template-selector">
+                                <div class="template-option active" data-template="modern">
+                                    <div class="template-preview modern-preview"></div>
+                                    <span>Modern</span>
+                                </div>
+                                <div class="template-option" data-template="classic">
+                                    <div class="template-preview classic-preview"></div>
+                                    <span>Classic</span>
+                                </div>
+                                <div class="template-option" data-template="creative">
+                                    <div class="template-preview creative-preview"></div>
+                                    <span>Creative</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Generate Button -->
+                        <button type="submit" id="generate-btn" class="generate-btn">
+                            <span class="btn-text">Generate Resume</span>
+                            <span class="btn-loader"><i class="fas fa-spinner fa-spin"></i></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <h3>Preview</h3>
+                        <button id="download-btn" class="download-btn" disabled>
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                    </div>
+                    <div class="preview-container">
+                        <div id="resume-preview" class="resume-preview">
+                            <div class="preview-placeholder">
+                                <i class="fas fa-file-alt"></i>
+                                <p>Fill out the form to see your resume preview</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Resume Generator. Made with ❤️ on Replit</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
